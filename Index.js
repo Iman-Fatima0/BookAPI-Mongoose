@@ -33,7 +33,7 @@ app.post('/books/Add', async (req, res) => {
 
 app.get('/books/get/:_id', async (req, res) => {
     
-        const id = req.params.id;
+        const id = req.params._id;
         const findbook = await Books.findById({id:_id});
                 res.status(200).json(findbook);
 
@@ -53,7 +53,7 @@ app.get('/books/search',async (req, res) => {
 })
 app.put('/books/update/:_id',async(req, res)=>
     {
-        const id=req.params.id;
+        const id=req.params._id;
         const data=req.body;
         const updates=await Books.findByIdAndUpdate({_id:id}, data, {new:true});
         res.json(updates);
@@ -61,7 +61,7 @@ app.put('/books/update/:_id',async(req, res)=>
 
     app.delete('/books/delete/:_id',async(req, res)=>
         {
-            const id=req.params.id;
+            const id=req.params._id;
             const deleted=await Books.findByIdAndDelete({_id:id});
             res.json(deleted);
         })
